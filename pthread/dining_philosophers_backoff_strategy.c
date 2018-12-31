@@ -101,6 +101,5 @@ int main(int argc, char **argv)
   	{
   		pthread_mutex_destroy(&fork_locks[i]);
   	}
-
 	return EXIT_SUCCESS;
 }
