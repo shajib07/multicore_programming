@@ -13,7 +13,6 @@
 
 #define NUM_PHIL 10
 
-
 pthread_mutex_t fork_locks[NUM_PHIL];
 int exit_flag = 0;
 
