@@ -14,7 +14,6 @@
 
 pthread_mutex_t the_mutex;
 pthread_cond_t condc, condp;
-
 int buffer = 0;
 
 void* producer(void* argc)
