@@ -28,31 +28,31 @@ void* philosopher(void* argc)
 
 	while(!exit_flag)
 	{
-    	int first = min(left, right);   // take the fork with the lower id first
-    	int second = max(left, right);  // and the fork with the higher id last
+		int first = min(left, right);   // take the fork with the lower id first
+		int second = max(left, right);  // and the fork with the higher id last
 
-    	/* lock first fork */
-    	pthread_mutex_lock(&fork_locks[first]);
+		/* lock first fork */
+		pthread_mutex_lock(&fork_locks[first]);
 
-	    /* simulate picking up the first fork */
-	    printf("Philosopher %d picked up first fork %d.\n", id, first); fflush(stdout);
+		/* simulate picking up the first fork */
+		printf("Philosopher %d picked up first fork %d.\n", id, first); fflush(stdout);
 
-	    /* lock second fork */
-	    pthread_mutex_lock(&fork_locks[second]);
+		/* lock second fork */
+		pthread_mutex_lock(&fork_locks[second]);
 
-	    printf("Philosopher %d picked up second fork %d.\n", id, second); fflush(stdout);
+		printf("Philosopher %d picked up second fork %d.\n", id, second); fflush(stdout);
 
-	    printf("Philosopher %d is eating.\n",id); fflush(stdout);
+		printf("Philosopher %d is eating.\n",id); fflush(stdout);
 
-	    /*unlock second fork */
-	    pthread_mutex_unlock(&fork_locks[second]);
-	    printf("Philosopher %d put back second fork.\n",id); fflush(stdout);
+		/*unlock second fork */
+		pthread_mutex_unlock(&fork_locks[second]);
+		printf("Philosopher %d put back second fork.\n",id); fflush(stdout);
 
-	    /* unlock second fork */
-	    pthread_mutex_unlock(&fork_locks[first]);
-	    printf("Philosopher %d put back first fork.\n",id); fflush(stdout);
+		/* unlock second fork */
+		pthread_mutex_unlock(&fork_locks[first]);
+		printf("Philosopher %d put back first fork.\n",id); fflush(stdout);
 
-	    printf("Philosopher %d is thinking.\n",id); fflush(stdout);
+		printf("Philosopher %d is thinking.\n",id); fflush(stdout);
 	}
 }
 
