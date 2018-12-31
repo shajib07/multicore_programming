@@ -24,17 +24,18 @@ void* philosopher(void* argc)
 
 	while(exit_flag == 0)
 	{
-	    int has_eaten = 0;
+		
+	    	int has_eaten = 0;
 
 		int first = left;
 		int second = right;
 
-	    /* lock first fork */
+		/* lock first fork */
 		pthread_mutex_lock(&fork_locks[first]);
 
-	    printf("Philosopher %d picked up first fork %d.\n", id, first); fflush(stdout);
+	    	printf("Philosopher %d picked up first fork %d.\n", id, first); fflush(stdout);
 
-	    /* try to lock second fork */
+	    	/* try to lock second fork */
 		int ret = pthread_mutex_trylock(&fork_locks[second]);
 		if (ret == EBUSY) 
 		{
@@ -49,18 +50,18 @@ void* philosopher(void* argc)
   	      	has_eaten = 1;
 	      	printf("Philosopher %d is eating.\n",id); fflush(stdout);
 
-  		    /*unlock second fork */
-		    pthread_mutex_unlock(&fork_locks[second]);
+	    	/*unlock second fork */
+	    	pthread_mutex_unlock(&fork_locks[second]);
       		printf("Philosopher %d put back second fork.\n",id); fflush(stdout);
 		}
 		
 		/* unlock second fork */
-	    pthread_mutex_unlock(&fork_locks[first]);
-	    printf("Philosopher %d put back first fork.\n",id); fflush(stdout);
+	    	pthread_mutex_unlock(&fork_locks[first]);
+	    	printf("Philosopher %d put back first fork.\n",id); fflush(stdout);
 
-	    // think only after eating
-	    if (has_eaten == 1)
-	      	printf("Philosopher %d is thinking.\n",id); fflush(stdout);
+	    	// think only after eating
+	    	if (has_eaten == 1)
+	      		printf("Philosopher %d is thinking.\n",id); fflush(stdout);
 	}
 
 }
