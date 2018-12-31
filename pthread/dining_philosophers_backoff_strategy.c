@@ -24,9 +24,7 @@ void* philosopher(void* argc)
 
 	while(exit_flag == 0)
 	{
-		
 	    	int has_eaten = 0;
-
 		int first = left;
 		int second = right;
 
